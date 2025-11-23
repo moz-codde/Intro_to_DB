@@ -7,7 +7,7 @@ try:
         password="moz.codde",
         database="alx_book_store",
     )
-except:
+except mysql.connector.Error:
     print("Error: Failed to connect to the DB")
 
 my_cursor = mydb.cursor()
