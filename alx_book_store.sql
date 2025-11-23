@@ -3,9 +3,9 @@ CREATE DATABASE IF NOT EXISTS alx_book_store;
 CREATE TABLE IF NOT EXISTS Books (
     book_id INT PRIMARY KEY,
     title VARCHAR(130),
-    author_id INT FOREIGN KEY,
     price DOUBLE,
-    publication_date DATE
+    publication_date DATE,
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id),
 )
 
 CREATE TABLE IF NOT EXISTS Authors (
@@ -22,13 +22,13 @@ CREATE TABLE IF NOT EXISTS Customers (
 
 CREATE TABLE IF NOT EXISTS Orders (
     order_id INT PRIMARY KEY,
-    customer_id INT FOREIGN KEY,
     order_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
 )
 
 CREATE TABLE IF NOT EXISTS Order_Details (
     order_detail_id INT PRIMARY KEY,
-    order_id INT FOREIGN KEY,
-    book_id INT FOREIGN KEY,
     quantity DOUBLE,
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id),
 )
