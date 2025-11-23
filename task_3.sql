@@ -1,0 +1,2 @@
+USE %s%;
+SHOW TABLES;
